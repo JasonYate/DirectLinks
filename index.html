@@ -2,30 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Random redirect from Dropbox</title>
+  <title>Random redirect from GitHub</title>
   <script>
     window.onload = async function () {
       try {
-        // Upload the file from Dropbox
-        const response = await fetch('https://www.dropbox.com/scl/fi/3blipflowuzuupo3s0ldf/AllAds.txt?rlkey=20a6dwhc1vhgx8aq56j94x5rt&st=pux6bi75&dl=1');
+        const response = await fetch('https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/AdsTerra.txt');
         const text = await response.text();
 
-        // Separar los enlaces por línea
         const links = text.split('\n').map(link => link.trim()).filter(link => link);
-
-        // Choose a link at random
         const randomLink = links[Math.floor(Math.random() * links.length)];
 
-        // Redirect
         window.location.href = randomLink;
       } catch (error) {
         console.error('Error loading links:', error);
-        document.body.innerHTML = '<p>Error cargando los enlaces.</p>';
+        document.body.innerHTML = '<p>Error loading links.</p>';
       }
     };
   </script>
 </head>
 <body>
-  <p>Redireccionando, por favor espera...</p>
+  <p>Redirecting, please wait...</p>
 </body>
 </html>
