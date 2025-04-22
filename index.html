@@ -6,7 +6,7 @@
   <script>
     window.onload = async function () {
       try {
-        const response = await fetch('https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/AdsTerra.txt');
+        const response = await fetch('https://raw.githubusercontent.com/JasonYate/DirectLinks/refs/heads/main/AllAds.txt');
         const text = await response.text();
 
         const links = text.split('\n').map(link => link.trim()).filter(link => link);
