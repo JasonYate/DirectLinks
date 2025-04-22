@@ -12,8 +12,8 @@
         const links = text.split('\n').map(link => link.trim()).filter(link => link);
         const randomLink = links[Math.floor(Math.random() * links.length)];
 
-        // Open random link in new tab
-        window.open(randomLink, '_blank');
+        // Open random link in the same tab
+        window.location.href = randomLink;
       } catch (error) {
         console.error('Error loading links:', error);
         document.body.innerHTML = '<p>Error loading links.</p>';
