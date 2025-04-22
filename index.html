@@ -12,8 +12,11 @@
         const links = text.split('\n').map(link => link.trim()).filter(link => link);
         const randomLink = links[Math.floor(Math.random() * links.length)];
 
-        // Open random link in the same tab
-        window.location.href = randomLink;
+        // Open the random link first
+        window.open(randomLink, '_blank');
+
+        // Then open the Pixverse link
+        window.open('https://app.pixverse.ai/', '_blank');
       } catch (error) {
         console.error('Error loading links:', error);
         document.body.innerHTML = '<p>Error loading links.</p>';
