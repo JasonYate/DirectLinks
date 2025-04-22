@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Random redirect from GitHub</title>
+  <title>Redirección aleatoria desde GitHub</title>
   <script>
     window.onload = async function () {
       try {
@@ -12,15 +12,16 @@
         const links = text.split('\n').map(link => link.trim()).filter(link => link);
         const randomLink = links[Math.floor(Math.random() * links.length)];
 
-        window.location.href = randomLink;
+        // Abre el enlace aleatorio en nueva pestaña
+        window.open(randomLink, '_blank');
       } catch (error) {
-        console.error('Error loading links:', error);
-        document.body.innerHTML = '<p>Error loading links.</p>';
+        console.error('Error cargando los enlaces:', error);
+        document.body.innerHTML = '<p>Error cargando los enlaces.</p>';
       }
     };
   </script>
 </head>
 <body>
-  <p>Redirecting, please wait...</p>
+  <p>Abriendo enlace aleatorio en nueva pestaña...</p>
 </body>
 </html>
