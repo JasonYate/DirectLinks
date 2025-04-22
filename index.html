@@ -1,32 +1,43 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Random redirect from GitHub</title>
-  <script>
-    window.onload = async function () {
-      try {
-        const response = await fetch('https://raw.githubusercontent.com/JasonYate/DirectLinks/refs/heads/main/AllAds.txt');
-        const text = await response.text();
-
-        const links = text.split('\n').map(link => link.trim()).filter(link => link);
-        const randomLink = links[Math.floor(Math.random() * links.length)];
-
-        // Then open the Pixverse link
-        window.open('https://app.pixverse.ai/', '_blank');
-        
-        // Open the random link first
-        window.open(randomLink, '_blank');
-
-        
-      } catch (error) {
-        console.error('Error loading links:', error);
-        document.body.innerHTML = '<p>Error loading links.</p>';
-      }
-    };
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random Ad Loader</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-  <p>Opening random link in new tab...</p>
+  <script>
+    // Fetch the JSON file from GitHub
+    fetch("https://raw.githubusercontent.com/JasonYate/DirectLinks/refs/heads/main/AllAds.txt")
+      .then(response => response.json())
+      .then(data => {
+        // Combine all links into a single array
+        const allLinks = [...data.AdsTerra, ...data.Monetag];
+
+        // Choose one link at random
+        const randomLink = allLinks[Math.floor(Math.random() * allLinks.length)].url;
+
+        // Create and load the iframe with the random URL
+        const iframe = document.createElement("iframe");
+        iframe.src = randomLink;
+        document.body.appendChild(iframe);
+      })
+      .catch(error => {
+        console.error("Failed to load or parse JSON:", error);
+        document.body.innerHTML = "<p style='text-align:center;padding:20px;'>Error loading content.</p>";
+      });
+  </script>
 </body>
 </html>
