@@ -10,11 +10,6 @@
       padding: 0;
       height: 100%;
     }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
   </style>
 </head>
 <body>
@@ -29,10 +24,7 @@
         // Choose one link at random
         const randomLink = allLinks[Math.floor(Math.random() * allLinks.length)].url;
 
-        // Create and load the iframe with the random URL
-        const iframe = document.createElement("iframe");
-        iframe.src = randomLink;
-        document.body.appendChild(iframe);
+        window.location.href = randomLink;
       })
       .catch(error => {
         console.error("Failed to load or parse JSON:", error);
